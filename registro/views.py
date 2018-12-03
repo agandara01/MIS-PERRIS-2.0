@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Persona
-from django.shortcuts import redirect
 from .models import Articulo
+from django.contrib.auth import logout
 # Create your views here.
 
 #importar user
@@ -101,4 +101,8 @@ def hola(request):
 
 def contacto(request):
     return render(request,'contacto.html',{})
-    
+
+
+def logOut(request):
+    logout(request)
+    return redirect('/')

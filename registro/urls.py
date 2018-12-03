@@ -4,6 +4,7 @@ from django.urls import path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import include, url
 
 urlpatterns = [
     path('', views.index, name="index"),
@@ -20,4 +21,5 @@ urlpatterns = [
     path('inicio',views.inicio,name="inicio"),
     path('hola',views.hola,name="hola"),
     path('contacto',views.contacto,name="contacto"),
+    url(r'^salir/$',views.logOut,name='logOut'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
