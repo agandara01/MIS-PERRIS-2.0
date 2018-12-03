@@ -22,4 +22,6 @@ urlpatterns = [
     path('hola',views.hola,name="hola"),
     path('contacto',views.contacto,name="contacto"),
     url(r'^salir/$',views.logOut,name='logOut'),
+    # Necesario para allauth
+    path('accounts/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -45,17 +45,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url "index"%}">Adoptar</a>
               </li>
-
-              {% if not user.is_authenticated %}
-              <li>
-                <a href="{% url 'social:begin' 'facebook' %}">Facebook Login</a>
-              </li>
-              {% else %}
-              <h1> Bienvenido {{request.user}}</h1>
-              <li>
-                <a href="/salir/">LogOut</a>
-              </li>
-              {% endif %}
             </ul>
 
             
@@ -65,12 +54,12 @@
             
                 <div class="redes">
                           {% if user.is_authenticated %}
-                          <li class="aling" style="margin-right: 20px;">Bienvenido {{usuario}} Alonso </li>
+                          <li class="aling" style="margin-right: 20px;">Bienvenido {{request.user}} </li>
                           {% else %}
                           <li style="margin-right: 20px;" class=" aling"><a class="nav-item btn btn-outline-info" href="{% url "login" %}">Iniciar Sesión</a></li>
                           {% endif %}
                           {% if user.is_authenticated %}
-                          <li class=" aling"><a class="nav-item btn btn-outline-info" href="{% url "cerrar_session" %}">Salir</a></li>
+                          <li class=" aling"><a class="nav-item btn btn-outline-info" href="/salir/">Cerrar Sesión</a></li>
                           {% endif %}
                           <li class=" aling" > <img src="{% static "img/redes/email.png"%}" height="40" width="40" alt=""></li> 
                           <li class=" aling" > <img src="{% static "img/redes/facebook.png"%}" height="40" width="40" alt=""></li> 
