@@ -3,10 +3,14 @@ from django.http import HttpResponse
 from .models import Persona
 from .models import Articulo
 from django.contrib.auth import logout
+
+
+from rest_framework import viewsets
+from registro.serializers import PersonaSerializer, ArticuloSerializer
 # Create your views here.
 
 #importar user
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 #sistema de autenticación 
 from django.contrib.auth import authenticate,logout, login as auth_login
 
@@ -106,3 +110,18 @@ def contacto(request):
 def logOut(request):
     logout(request)
     return redirect('/')
+
+
+class PersonaViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Persona.objects.all().order_by('-date_joined')
+    serializer_class = PersonaSerializer
+ 
+class ArticuloViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Articulo.objects.all()
+    serializer_class = ArticuloSerializer

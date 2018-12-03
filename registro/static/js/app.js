@@ -24,8 +24,8 @@
 
    $("#button4").click(function(){
     swal({
-    title:'Postulante Creado',
-    text:"¡Bienvenido eres parte del equipo inmigrantes-Chile! En breve estaras en listado del apartado posterior",
+    title:'Mascota Registrada',
+    text:"¡Se ha registrado la mascota con exito!!",
     type:'success'
     })
    });
