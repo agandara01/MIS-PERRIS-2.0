@@ -41,6 +41,7 @@ DJANGO_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
 )
 THIRD_PARTY_APPS = (
     'allauth',
@@ -48,11 +49,16 @@ THIRD_PARTY_APPS = (
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
 )
+
 LOCAL_APPS = (
     'registro',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+LOGIN_REDIRECT_URL = '/'
+
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
 SITE_ID = 1
 
@@ -153,12 +159,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 AUTHENTICATION_BACKENDS = [
     'social.backends.facebook.FacebookAppOAuth2',
     'social.backends.facebook.FacebookOAuth2',
+    
     'django.contrib.auth.backends.ModelBackend',
         # Necesario para logear por username en Django admin, sin importar allauth
     'django.contrib.auth.backends.ModelBackend',
     
     # Metodo de autenticación especifico de allauth, como logear por email
    'allauth.account.auth_backends.AuthenticationBackend',
+
+
 ]
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
